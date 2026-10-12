@@ -10,244 +10,198 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Lexend', sans-serif; background-color: #f1f5f9; }
+        body { font-family: 'Lexend', sans-serif; background-color: #f8fafc; }
         .btn-pulse {
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-            70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(239, 68, 68, 0); }
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); }
+            70% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
             100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
         }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-28">
 
     <!-- Header Navigation -->
-    <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-800 text-white shadow-lg sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
+    <header class="bg-gradient-to-r from-blue-900 via-indigo-900 to-blue-800 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-xl mx-auto px-4 py-2.5 flex items-center justify-between">
             <div class="flex items-center space-x-2">
-                <i class="fa-solid fa-shield-halved text-yellow-400 text-2xl"></i>
-                <span class="font-bold text-lg tracking-wide uppercase">Tài Chính 24/7</span>
+                <i class="fa-solid fa-shield-halved text-yellow-400 text-xl"></i>
+                <span class="font-bold text-base tracking-wide uppercase">Tài Chính 24/7</span>
             </div>
-            <a href="https://zalo.me/0878665588" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-3 py-1.5 rounded-full text-sm flex items-center shadow">
-                <i class="fa-solid fa-phone mr-1.5"></i> 0878.66.55.88
+            <a href="https://zalo.me/0878665588" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-3 py-1 rounded-full text-xs flex items-center shadow">
+                <i class="fa-solid fa-phone mr-1"></i> 0878.66.55.88
             </a>
         </div>
     </header>
 
-    <!-- Banner Hero / Tổng quan -->
-    <section class="bg-gradient-to-b from-blue-900 to-indigo-900 text-white py-8 px-4 text-center">
-        <div class="max-w-3xl mx-auto">
-            <span class="bg-yellow-400 text-blue-950 text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">Hỗ trợ toàn quốc</span>
-            <h1 class="text-2xl md:text-4xl font-extrabold mt-3 leading-tight">MỞ THẺ TÍN DỤNG & VAY ONLINE</h1>
-            <p class="text-blue-200 text-sm md:text-base mt-2">Duyệt nhanh thần tốc - Thủ tục đơn giản chỉ cần CCCD</p>
+    <!-- Banner Hero compact -->
+    <section class="bg-gradient-to-b from-blue-900 to-indigo-900 text-white py-5 px-4 text-center">
+        <div class="max-w-xl mx-auto">
+            <span class="bg-yellow-400 text-blue-950 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Hỗ trợ toàn quốc</span>
+            <h1 class="text-xl md:text-2xl font-extrabold mt-2 leading-tight">MỞ THẺ TÍN DỤNG & VAY ONLINE</h1>
+            <p class="text-blue-200 text-xs mt-1">Duyệt nhanh thần tốc - Thủ tục đơn giản chỉ cần CCCD</p>
         </div>
     </section>
 
     <!-- Danh sách gói vay & Thẻ tín dụng -->
-    <main class="max-w-3xl mx-auto px-4 mt-6 space-y-8">
+    <main class="max-w-xl mx-auto px-4 mt-4 space-y-5">
 
-        <!-- 1. MỞ THẺ TÍN DỤNG VIB -->
-        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-            <!-- Header VIB -->
-            <div class="bg-emerald-600 text-white p-4 flex items-center justify-between">
+        <!-- 1. LOTTE FINANCE -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <div class="bg-red-600 text-white px-4 py-2.5 flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <span class="bg-white text-emerald-700 font-black px-2 py-0.5 rounded text-xs">VIB</span>
-                    <h2 class="font-bold text-lg">MỞ THẺ TÍN DỤNG VIB</h2>
+                    <span class="bg-white text-red-600 font-black px-1.5 py-0.5 rounded text-[10px]">LOTTE</span>
+                    <h2 class="font-bold text-sm md:text-base">LOTTE FINANCE</h2>
                 </div>
-                <span class="bg-emerald-700 text-xs px-2.5 py-1 rounded-full">Duyệt Online</span>
+                <span class="bg-red-700 text-[10px] px-2 py-0.5 rounded-full">Duyệt 04h</span>
             </div>
 
-            <!-- Ảnh VIB -->
-            <div class="p-4 bg-gray-50 flex justify-center border-b border-gray-100">
-                <a href="https://shorten.asia/sAGVKtc5" target="_blank" class="block max-w-md w-full overflow-hidden rounded-xl shadow-sm hover:shadow-md transition">
-                    <img src="VIB.jpeg" alt="Mở Thẻ Tín Dụng VIB" class="w-full h-auto hover:scale-105 transition duration-300">
+            <!-- Ảnh thu nhỏ gọn -->
+            <div class="p-3 bg-gray-50 flex justify-center border-b border-gray-100">
+                <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="block max-w-[280px] md:max-w-[320px] w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm hover:opacity-95 transition">
+                    <img src="LOTTE FINANCE.jpeg" alt="LOTTE FINANCE" class="w-full h-auto max-h-48 object-contain">
                 </a>
             </div>
 
-            <!-- Nội dung VIB -->
-            <div class="p-5 space-y-4">
-                <p class="text-sm text-gray-700 leading-relaxed">
-                    <strong class="text-emerald-700">Thẻ tín dụng VIB</strong> là loại thẻ tích hợp thẻ tín dụng và thẻ thanh toán đầu tiên tại Đông Nam Á, dành riêng cho các tín đồ mua sắm.
-                </p>
-
-                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 space-y-2">
-                    <h3 class="font-bold text-emerald-900 text-sm uppercase">Điểm nổi bật khi sở hữu thẻ VIB:</h3>
-                    <ul class="text-sm text-gray-700 space-y-2">
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span>Ưu đãi trả góp <strong>0% lãi suất</strong>.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span>Mở tài khoản miễn phí – chuyển khoản online mọi lúc mọi nơi.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span><strong>Không chứng minh thu nhập</strong>.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span>Hoàn 100% phí thường niên khi mở thẻ.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span>Hoàn tiền đến <strong>6%</strong> cho chi tiêu trực tuyến.</span></li>
-                    </ul>
+            <div class="p-4 space-y-3">
+                <div class="grid grid-cols-3 gap-1.5 text-center bg-red-50 p-2.5 rounded-xl border border-red-100">
+                    <div>
+                        <p class="text-[10px] text-gray-500">Giải ngân</p>
+                        <p class="font-bold text-red-600 text-xs md:text-sm">Chỉ 04h</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-500">Lãi suất từ</p>
+                        <p class="font-bold text-red-600 text-xs md:text-sm">0,83%/tháng</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-gray-500">Hạn mức đến</p>
+                        <p class="font-bold text-red-600 text-xs md:text-sm">600 triệu</p>
+                    </div>
                 </div>
 
-                <!-- Nút Mở Thẻ VIB -->
-                <a href="https://shorten.asia/sAGVKtc5" target="_blank" class="btn-pulse block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-base uppercase tracking-wide">
-                    ĐĂNG KÝ MỞ THẺ VIB NGAY <i class="fa-solid fa-arrow-right ml-1"></i>
+                <div class="text-xs text-gray-600">
+                    <p class="font-semibold text-gray-800 mb-1"><i class="fa-solid fa-users text-red-500 mr-1"></i> Đối tượng:</p>
+                    <p class="pl-2">• Công chức, NV văn phòng, công nhân, phụ nữ...</p>
+                </div>
+
+                <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="btn-pulse block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-2.5 rounded-xl shadow transition text-sm uppercase tracking-wide">
+                    ĐĂNG KÝ VAY LOTTE <i class="fa-solid fa-arrow-right ml-1"></i>
                 </a>
             </div>
         </div>
 
 
-        <!-- 2. LOTTE FINANCE -->
-        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-            <div class="bg-red-600 text-white p-4 flex items-center justify-between">
+        <!-- 2. SHINHAN FINANCE (iShinhan) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <div class="bg-blue-700 text-white px-4 py-2.5 flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <span class="bg-white text-red-600 font-black px-2 py-0.5 rounded text-xs">LOTTE</span>
-                    <h2 class="font-bold text-lg">LOTTE FINANCE</h2>
+                    <span class="bg-white text-blue-700 font-black px-1.5 py-0.5 rounded text-[10px]">SHINHAN</span>
+                    <h2 class="font-bold text-sm md:text-base">SHINHAN FINANCE</h2>
                 </div>
-                <span class="bg-red-700 text-xs px-2.5 py-1 rounded-full">Duyệt thần tốc</span>
+                <span class="bg-blue-800 text-[10px] px-2 py-0.5 rounded-full">Dễ Dàng</span>
             </div>
 
-            <!-- Ảnh Lotte -->
-            <div class="p-4 bg-gray-50 flex justify-center border-b border-gray-100">
-                <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="block max-w-md w-full overflow-hidden rounded-xl shadow-sm hover:shadow-md transition">
-                    <img src="LOTTE FINANCE.jpeg" alt="LOTTE FINANCE" class="w-full h-auto hover:scale-105 transition duration-300">
+            <!-- Ảnh thu nhỏ gọn -->
+            <div class="p-3 bg-gray-50 flex justify-center border-b border-gray-100">
+                <a href="javascript:void(0)" onclick="redirectShinhan()" class="block max-w-[280px] md:max-w-[320px] w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm hover:opacity-95 transition">
+                    <img src="Shinhan Finance.jpeg" alt="Shinhan Finance" class="w-full h-auto max-h-48 object-contain">
                 </a>
             </div>
 
-            <div class="p-5 space-y-4">
-                <div class="grid grid-cols-3 gap-2 text-center bg-red-50 p-3 rounded-xl border border-red-100">
-                    <div>
-                        <p class="text-xs text-gray-500">Giải ngân</p>
-                        <p class="font-bold text-red-600 text-sm md:text-base">Chỉ 04 giờ</p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500">Lãi suất từ</p>
-                        <p class="font-bold text-red-600 text-sm md:text-base">0,83%/tháng</p>
-                    </div>
-                    <div>
-                        <p class="text-xs text-gray-500">Hạn mức lên tới</p>
-                        <p class="font-bold text-red-600 text-sm md:text-base">600 triệu</p>
-                    </div>
+            <div class="p-4 space-y-3">
+                <div class="bg-blue-50 p-3 rounded-xl border border-blue-100 space-y-1 text-xs text-gray-700">
+                    <p class="font-bold text-blue-900 uppercase">Ưu đãi nổi bật:</p>
+                    <p>• Chỉ cần CCCD, không chứng minh thu nhập</p>
+                    <p>• Duyệt 100% online, vay đến 100 triệu (đến 48 tháng)</p>
                 </div>
 
-                <div>
-                    <h3 class="font-semibold text-gray-800 text-sm mb-2 flex items-center">
-                        <i class="fa-solid fa-users text-red-500 mr-2"></i> Đối tượng khách hàng:
-                    </h3>
-                    <ul class="text-sm text-gray-600 grid grid-cols-2 gap-2 pl-2">
-                        <li>• Công chức, viên chức</li>
-                        <li>• Nhân viên văn phòng</li>
-                        <li>• Công nhân</li>
-                        <li>• Phụ nữ (nội trợ, kinh doanh...)</li>
-                    </ul>
-                </div>
-
-                <div class="border-t pt-3 flex items-center justify-between text-xs text-gray-500">
-                    <span><i class="fa-solid fa-shield-halved text-emerald-500 mr-1"></i> An toàn - Bảo mật</span>
-                    <span><i class="fa-solid fa-check text-blue-500 mr-1"></i> Tập đoàn LOTTE</span>
-                </div>
-
-                <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="btn-pulse block w-full text-center bg-red-600 hover:bg-red-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-base uppercase tracking-wide">
-                    ĐĂNG KÝ VAY LOTTE FINANCE <i class="fa-solid fa-arrow-right ml-1"></i>
-                </a>
-            </div>
-        </div>
-
-
-        <!-- 3. SHINHAN FINANCE (iShinhan) -->
-        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-            <div class="bg-blue-700 text-white p-4 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-white text-blue-700 font-black px-2 py-0.5 rounded text-xs">SHINHAN</span>
-                    <h2 class="font-bold text-lg">SHINHAN FINANCE</h2>
-                </div>
-                <span class="bg-blue-800 text-xs px-2.5 py-1 rounded-full">Dễ dàng & Nhẹ nhàng</span>
-            </div>
-
-            <!-- Ảnh Shinhan -->
-            <div class="p-4 bg-gray-50 flex justify-center border-b border-gray-100">
-                <a href="javascript:void(0)" onclick="redirectShinhan()" class="block max-w-md w-full overflow-hidden rounded-xl shadow-sm hover:shadow-md transition">
-                    <img src="Shinhan Finance.jpeg" alt="Shinhan Finance" class="w-full h-auto hover:scale-105 transition duration-300">
-                </a>
-            </div>
-
-            <div class="p-5 space-y-4">
-                <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 space-y-2">
-                    <h3 class="font-bold text-blue-900 text-sm uppercase">Lợi ích khách hàng:</h3>
-                    <ul class="text-sm text-gray-700 space-y-1.5">
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-600 mt-1 mr-2 text-xs"></i> <span><strong>Chỉ cần CCCD</strong>, không cần chứng minh thu nhập.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-600 mt-1 mr-2 text-xs"></i> <span>Đăng ký và xét duyệt <strong>100% online</strong>.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-600 mt-1 mr-2 text-xs"></i> <span>Vay đến <strong>100 triệu đồng</strong>.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-600 mt-1 mr-2 text-xs"></i> <span>Kỳ hạn linh hoạt lên đến <strong>48 tháng</strong>.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-blue-600 mt-1 mr-2 text-xs"></i> <span>Lãi suất từ 29%/năm – 49%/năm tính trên dư nợ giảm dần.</span></li>
-                    </ul>
-                </div>
-
-                <div class="text-sm text-gray-600 space-y-1">
-                    <p><strong>• Độ tuổi:</strong> Từ 21 tuổi đến tuổi nghỉ hưu (theo luật).</p>
-                    <p><strong>• Khu vực:</strong> Toàn quốc, ưu tiên các thành phố lớn.</p>
-                </div>
-
-                <button onclick="redirectShinhan()" class="btn-pulse w-full text-center bg-blue-700 hover:bg-blue-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-base uppercase tracking-wide">
-                    ĐĂNG KÝ VAY SHINHAN FINANCE <i class="fa-solid fa-arrow-right ml-1"></i>
+                <button onclick="redirectShinhan()" class="btn-pulse w-full text-center bg-blue-700 hover:bg-blue-800 text-white font-bold py-2.5 rounded-xl shadow transition text-sm uppercase tracking-wide">
+                    ĐĂNG KÝ VAY SHINHAN <i class="fa-solid fa-arrow-right ml-1"></i>
                 </button>
             </div>
         </div>
 
 
-        <!-- 4. VPBANK -->
-        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-            <div class="bg-emerald-600 text-white p-4 flex items-center justify-between">
+        <!-- 3. VPBANK -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <div class="bg-emerald-600 text-white px-4 py-2.5 flex items-center justify-between">
                 <div class="flex items-center space-x-2">
-                    <span class="bg-white text-emerald-700 font-black px-2 py-0.5 rounded text-xs">VPBANK</span>
-                    <h2 class="font-bold text-lg">CẦN TIỀN? CÓ LIỀN TRONG 05 PHÚT</h2>
+                    <span class="bg-white text-emerald-700 font-black px-1.5 py-0.5 rounded text-[10px]">VPBANK</span>
+                    <h2 class="font-bold text-sm md:text-base">CẦN TIỀN? CÓ LIỀN TRONG 05'</h2>
                 </div>
-                <span class="bg-emerald-700 text-xs px-2.5 py-1 rounded-full">Duyệt 05 Phút</span>
+                <span class="bg-emerald-700 text-[10px] px-2 py-0.5 rounded-full">Duyệt 05 Phút</span>
             </div>
 
-            <!-- Ảnh VPBank -->
-            <div class="p-4 bg-gray-50 flex justify-center border-b border-gray-100">
-                <a href="https://shorten.asia/mjYv557t" target="_blank" class="block max-w-md w-full overflow-hidden rounded-xl shadow-sm hover:shadow-md transition">
-                    <img src="Vpbank.jpeg" alt="VPBank" class="w-full h-auto hover:scale-105 transition duration-300">
+            <!-- Ảnh thu nhỏ gọn -->
+            <div class="p-3 bg-gray-50 flex justify-center border-b border-gray-100">
+                <a href="https://shorten.asia/mjYv557t" target="_blank" class="block max-w-[280px] md:max-w-[320px] w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm hover:opacity-95 transition">
+                    <img src="Vpbank.jpeg" alt="VPBank" class="w-full h-auto max-h-48 object-contain">
                 </a>
             </div>
 
-            <div class="p-5 space-y-4">
-                <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 space-y-2">
-                    <h3 class="font-bold text-emerald-900 text-sm uppercase">Lợi ích vượt trội:</h3>
-                    <ul class="text-sm text-gray-700 space-y-1.5">
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span>Tiện lợi: Đăng ký 100% trực tuyến trên website VPBank.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span>Dễ dàng: Chỉ cần CCCD gắn chip/Căn cước với vài thao tác.</span></li>
-                        <li class="flex items-start"><i class="fa-solid fa-circle-check text-emerald-600 mt-1 mr-2 text-xs"></i> <span>Nhanh chóng: Phê duyệt trong 05 phút – Giải ngân ngay về tài khoản.</span></li>
-                    </ul>
+            <div class="p-4 space-y-3">
+                <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100 space-y-1 text-xs text-gray-700">
+                    <p class="font-bold text-emerald-900 uppercase">Lợi ích vượt trội:</p>
+                    <p>• Đăng ký 100% online trên website VPBank chỉ cần CCCD</p>
+                    <p>• <strong>Cam kết 4 KHÔNG:</strong> Không bảo hiểm, không thẩm định, không phí ẩn, không lãi khi chưa giải ngân</p>
                 </div>
 
-                <div class="bg-gray-50 p-3 rounded-xl border text-xs text-gray-600 space-y-1">
-                    <p class="font-bold text-emerald-700 uppercase">Cam kết 4 KHÔNG:</p>
-                    <p>✔ KHÔNG bảo hiểm khoản vay | ✔ KHÔNG thẩm định</p>
-                    <p>✔ KHÔNG phí ẩn | ✔ KHÔNG phát sinh lãi khi chưa giải ngân</p>
-                </div>
-
-                <div class="text-xs text-gray-500 space-y-1">
-                    <p><strong>• Điều kiện:</strong> Độ tuổi từ 23 - 70 tuổi. Có công việc & thu nhập, không có nợ xấu/nợ quá hạn.</p>
-                </div>
-
-                <a href="https://shorten.asia/mjYv557t" target="_blank" class="btn-pulse block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-base uppercase tracking-wide">
+                <a href="https://shorten.asia/mjYv557t" target="_blank" class="btn-pulse block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl shadow transition text-sm uppercase tracking-wide">
                     ĐĂNG KÝ VAY VPBANK <i class="fa-solid fa-arrow-right ml-1"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <!-- 4. MỞ THẺ TÍN DỤNG VIB (ĐƯỢC CHUYỂN XUỐNG CUỐI CÙNG) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+            <div class="bg-emerald-600 text-white px-4 py-2.5 flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <span class="bg-white text-emerald-700 font-black px-1.5 py-0.5 rounded text-[10px]">VIB</span>
+                    <h2 class="font-bold text-sm md:text-base">MỞ THẺ TÍN DỤNG VIB</h2>
+                </div>
+                <span class="bg-emerald-700 text-[10px] px-2 py-0.5 rounded-full">Duyệt Online</span>
+            </div>
+
+            <!-- Ảnh thu nhỏ gọn -->
+            <div class="p-3 bg-gray-50 flex justify-center border-b border-gray-100">
+                <a href="https://shorten.asia/sAGVKtc5" target="_blank" class="block max-w-[280px] md:max-w-[320px] w-full overflow-hidden rounded-lg border border-gray-200 shadow-sm hover:opacity-95 transition">
+                    <img src="VIB.jpeg" alt="Mở Thẻ Tín Dụng VIB" class="w-full h-auto max-h-48 object-contain">
+                </a>
+            </div>
+
+            <div class="p-4 space-y-3">
+                <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-100 space-y-1.5 text-xs text-gray-700">
+                    <p class="font-bold text-emerald-900 uppercase">Ưu đãi khi mở thẻ VIB:</p>
+                    <p>• Trả góp 0% lãi suất | Mở tài khoản miễn phí</p>
+                    <p>• <strong>Không chứng minh thu nhập</strong></p>
+                    <p>• Hoàn 100% phí thường niên & Hoàn tiền đến 6% mua sắm online</p>
+                </div>
+
+                <a href="https://shorten.asia/sAGVKtc5" target="_blank" class="btn-pulse block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-xl shadow transition text-sm uppercase tracking-wide">
+                    ĐĂNG KÝ MỞ THẺ VIB <i class="fa-solid fa-arrow-right ml-1"></i>
                 </a>
             </div>
         </div>
 
     </main>
 
-    <!-- Thanh Zalo / Hotline cố định -->
-    <div class="fixed bottom-4 left-0 right-0 px-4 z-40 max-w-3xl mx-auto">
-        <div class="bg-gray-900 text-white p-3 rounded-2xl shadow-2xl border border-gray-700 flex items-center justify-between">
-            <div class="flex items-center space-x-3">
-                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center font-bold text-lg">
+    <!-- Thanh Zalo cố định -->
+    <div class="fixed bottom-3 left-0 right-0 px-4 z-40 max-w-xl mx-auto">
+        <div class="bg-gray-900/95 backdrop-blur text-white p-2.5 rounded-2xl shadow-xl border border-gray-700 flex items-center justify-between">
+            <div class="flex items-center space-x-2.5">
+                <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center font-bold text-sm">
                     <i class="fa-solid fa-headset"></i>
                 </div>
                 <div>
-                    <p class="text-xs text-gray-400">Cần tư vấn hỗ trợ?</p>
-                    <p class="font-bold text-sm text-yellow-400">Zalo: 0878.66.55.88</p>
+                    <p class="text-[10px] text-gray-400">Tư vấn hỗ trợ?</p>
+                    <p class="font-bold text-xs text-yellow-400">Zalo: 0878.66.55.88</p>
                 </div>
             </div>
-            <a href="https://zalo.me/0878665588" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-xs font-bold transition">
-                Nhắn Zalo ngay
+            <a href="https://zalo.me/0878665588" target="_blank" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded-xl text-xs font-bold transition">
+                Nhắn Zalo
             </a>
         </div>
     </div>
