@@ -50,14 +50,11 @@
 
         <!-- 1. LOTTE FINANCE -->
         <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-            <!-- Header gói -->
-            <div class="bg-red-600 text-white p-4 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-white text-red-600 font-black px-2 py-0.5 rounded text-xs">LOTTE</span>
-                    <h2 class="font-bold text-lg">LOTTE FINANCE</h2>
-                </div>
-                <span class="bg-red-700 text-xs px-2.5 py-1 rounded-full">Duyệt thần tốc</span>
-            </div>
+            <!-- Ảnh Lotte Finance (Bấm vào ảnh sẽ chuyển link) -->
+            <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="block overflow-hidden">
+                <img src="LOTTE FINANCE.jpeg" alt="LOTTE FINANCE" class="w-full h-auto hover:scale-105 transition duration-300">
+            </a>
+
             <!-- Nội dung Lotte -->
             <div class="p-5 space-y-4">
                 <div class="grid grid-cols-3 gap-2 text-center bg-red-50 p-3 rounded-xl border border-red-100">
@@ -102,14 +99,11 @@
 
         <!-- 2. SHINHAN FINANCE (iShinhan) -->
         <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-            <!-- Header gói -->
-            <div class="bg-blue-700 text-white p-4 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-white text-blue-700 font-black px-2 py-0.5 rounded text-xs">SHINHAN</span>
-                    <h2 class="font-bold text-lg">SHINHAN FINANCE</h2>
-                </div>
-                <span class="bg-blue-800 text-xs px-2.5 py-1 rounded-full">Dễ dàng & Nhẹ nhàng</span>
-            </div>
+            <!-- Ảnh Shinhan Finance (Bấm vào ảnh sẽ tự nhận diện iOS/Android) -->
+            <a href="javascript:void(0)" onclick="redirectShinhan()" class="block overflow-hidden">
+                <img src="Shinhan Finance.jpeg" alt="Shinhan Finance" class="w-full h-auto hover:scale-105 transition duration-300">
+            </a>
+
             <!-- Nội dung Shinhan -->
             <div class="p-5 space-y-4">
                 <div class="bg-blue-50 p-4 rounded-xl border border-blue-100 space-y-2">
@@ -128,7 +122,7 @@
                     <p><strong>• Khu vực:</strong> Toàn quốc, ưu tiên các thành phố lớn.</p>
                 </div>
 
-                <!-- Nút Vay Shinhan (Tự động nhận diện Android / iOS) -->
+                <!-- Nút Vay Shinhan -->
                 <button onclick="redirectShinhan()" class="btn-pulse w-full text-center bg-blue-700 hover:bg-blue-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition text-base uppercase tracking-wide">
                     ĐĂNG KÝ VAY SHINHAN FINANCE <i class="fa-solid fa-arrow-right ml-1"></i>
                 </button>
@@ -138,14 +132,11 @@
 
         <!-- 3. VPBANK -->
         <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
-            <!-- Header gói -->
-            <div class="bg-emerald-600 text-white p-4 flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <span class="bg-white text-emerald-700 font-black px-2 py-0.5 rounded text-xs">VPBANK</span>
-                    <h2 class="font-bold text-lg">CẦN TIỀN? CÓ LIỀN TRONG 05 PHÚT</h2>
-                </div>
-                <span class="bg-emerald-700 text-xs px-2.5 py-1 rounded-full">Duyệt 05 Phút</span>
-            </div>
+            <!-- Ảnh VPBank (Bấm vào ảnh sẽ chuyển link) -->
+            <a href="https://shorten.asia/mjYv557t" target="_blank" class="block overflow-hidden">
+                <img src="Vpbank.jpeg" alt="VPBank" class="w-full h-auto hover:scale-105 transition duration-300">
+            </a>
+
             <!-- Nội dung VPBank -->
             <div class="p-5 space-y-4">
                 <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-100 space-y-2">
@@ -194,16 +185,16 @@
         </div>
     </div>
 
-    <!-- Script tự động chuyển hướng hệ điều hành cho iShinhan -->
+    <!-- Script tự động chuyển hướng hệ điều hành cho Shinhan -->
     <script>
         function redirectShinhan() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
             
-            // Kiểm tra nếu là thiết bị iOS (iPhone, iPad, iPod)
+            // Kiểm tra nếu là thiết bị iOS (iPhone, iPad)
             if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
                 window.open("https://shorten.asia/uRaeyXNU", "_blank");
             } else {
-                // Các thiết bị còn lại (Android, PC, v.v...)
+                // Các thiết bị còn lại (Android, máy tính...)
                 window.open("https://goecom.asia/CeJBGm8U", "_blank");
             }
         }
