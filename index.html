@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý Tài Chính Cá Nhân - FinManager</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#ecfdf5',
+                            100: '#d1fae5',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(156, 163, 175, 0.5);
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 transition-colors duration-200 min-h-screen flex flex-col">
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-30 bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-teal-400 flex items-center justify-center text-white shadow-lg shadow-emerald-500/30">
+                        <i class="fa-solid fa-wallet text-xl"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight bg-gradient-to-r from-emerald-600 to-teal-500 bg-clip-text text-transparent">FinManager</span>
+                </div>
+
+                <!-- Navigation Tabs (Desktop) -->
+                <nav class="hidden md:flex space-x-1">
+                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-tab active-tab px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie"></i> Dashboard
+                    </button>
+                    <button onclick="switchTab('transactions')" id="nav-transactions" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-list-check"></i> Sổ Thu Chi
+                    </button>
+                    <button onclick="switchTab('budgets')" id="nav-budgets" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-calculator"></i> Hạn Mức
+                    </button>
+                    <button onclick="switchTab('savings')" id="nav-savings" class="nav-tab px-4 py-2 rounded-lg text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-piggy-bank"></i> Tiết Kiệm
+                    </button>
+                </nav>
+
+                <!-- Actions Right -->
+                <div class="flex items-center gap-3">
+                    <!-- Backup & Restore -->
+                    <button onclick="exportData()" title="Xuất dữ liệu JSON" class="p-2 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                        <i class="fa-solid fa-download"></i>
+                    </button>
+                    <label title="Nhập dữ liệu JSON" class="p-2 text-gray-500 hover:text-emerald-600 dark:text-gray-400 dark:hover:text-emerald-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all cursor-pointer">
+                        <i class="fa-solid fa-upload"></i>
+                        <input type="file" id="import-file" accept=".json" class="hidden" onchange="importData(event)">
+                    </label>
+
+                    <!-- Dark/Light Theme Toggle -->
+                    <button id="theme-toggle" onclick="toggleTheme()" class="p-2 text-gray-500 hover:text-amber-500 dark:text-gray-400 dark:hover:text-amber-400 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-all">
+                        <i class="fa-solid fa-moon text-lg dark:hidden"></i>
+                        <i class="fa-solid fa-sun text-lg hidden dark:block"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 px-4 pt-2 pb-4 space-y-1">
+            <button onclick="switchTab('dashboard'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fa-solid fa-chart-pie w-6"></i> Dashboard
+            </button>
+            <button onclick="switchTab('transactions'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fa-solid fa-list-check w-6"></i> Sổ Thu Chi
+            </button>
+            <button onclick="switchTab('budgets'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fa-solid fa-calculator w-6"></i> Hạn Mức Chi Tiêu
+            </button>
+            <button onclick="switchTab('savings'); toggleMobileMenu()" class="w-full text-left px-3 py-2 rounded-lg text-base font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <i class="fa-solid fa-piggy-bank w-6"></i> Mục Tiêu Tiết Kiệm
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+
+        <!-- ================= TAB 1: DASHBOARD ================= -->
+        <section id="tab-dashboard" class="tab-content space-y-6">
+            <!-- Summary Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <!-- Total Balance -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Số Dư Hiện Tại</span>
+                        <div class="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400 flex items-center justify-center">
+                            <i class="fa-solid fa-scale-balanced text-lg"></i>
+                        </div>
+                    </div>
+                    <h3 id="stat-balance" class="text-2xl sm:text-3xl font-extrabold mt-4 text-gray-900 dark:text-white">0 ₫</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2"><i class="fa-solid fa-circle-info mr-1"></i>Thu nhập trừ Chi tiêu</p>
+                </div>
+
+                <!-- Total Income -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Tổng Thu Nhập</span>
+                        <div class="w-10 h-10 rounded-full bg-emerald-100 dark:bg-emerald-900/40 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-trend-up text-lg"></i>
+                        </div>
+                    </div>
+                    <h3 id="stat-income" class="text-2xl sm:text-3xl font-extrabold mt-4 text-emerald-600 dark:text-emerald-400">+0 ₫</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Tổng dòng tiền vào</p>
+                </div>
+
+                <!-- Total Expense -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-medium text-gray-500 dark:text-gray-400">Tổng Chi Tiêu</span>
+                        <div class="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+                            <i class="fa-solid fa-arrow-trend-down text-lg"></i>
+                        </div>
+                    </div>
+                    <h3 id="stat-expense" class="text-2xl sm:text-3xl font-extrabold mt-4 text-rose-600 dark:text-rose-400">-0 ₫</h3>
+                    <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">Tổng dòng tiền ra</p>
+                </div>
+            </div>
+
+            <!-- Charts & Analytics -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Doughnut Chart: Expenses by Category -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-pie text-emerald-500"></i> Cơ Cấu Chi Tiêu
+                    </h4>
+                    <div class="relative h-64 flex items-center justify-center">
+                        <canvas id="chart-expense-category"></canvas>
+                    </div>
+                </div>
+
+                <!-- Bar Chart: Monthly Comparison -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-chart-column text-teal-500"></i> Xu Hướng Thu Chi
+                    </h4>
+                    <div class="relative h-64 flex items-center justify-center">
+                        <canvas id="chart-monthly-trend"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Transactions Table Preview -->
+            <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-blue-500"></i> Giao Dịch Gần Đây
+                    </h4>
+                    <button onclick="switchTab('transactions')" class="text-sm font-medium text-emerald-600 dark:text-emerald-400 hover:underline">
+                        Xem tất cả <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="text-xs font-semibold text-gray-400 dark:text-gray-500 border-b border-gray-100 dark:border-gray-700 pb-2">
+                                <th class="p-3">NGÀY</th>
+                                <th class="p-3">LOẠI</th>
+                                <th class="p-3">DANH MỤC</th>
+                                <th class="p-3">GHI CHÚ</th>
+                                <th class="p-3 text-right">SỐ TIỀN</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recent-transactions-list" class="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
+                            <!-- JS Inject -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 2: TRANSACTIONS ================= -->
+        <section id="tab-transactions" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Transaction Form -->
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm h-fit">
+                    <h4 id="form-title" class="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                        <i class="fa-solid fa-plus-circle text-emerald-500"></i> Thêm Giao Dịch Mới
+                    </h4>
+                    <form id="transaction-form" onsubmit="handleSaveTransaction(event)" class="space-y-4">
+                        <input type="hidden" id="trans-id">
+
+                        <!-- Transaction Type -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Loại giao dịch</label>
+                            <div class="grid grid-cols-2 gap-3">
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="trans-type" value="expense" checked onchange="updateCategoryOptions()" class="peer hidden">
+                                    <div class="py-2.5 text-center text-sm font-semibold rounded-xl border border-gray-200 dark:border-gray-700 peer-checked:bg-rose-500 peer-checked:text-white peer-checked:border-rose-500 transition-all text-gray-700 dark:text-gray-300">
+                                        <i class="fa-solid fa-minus-circle mr-1"></i> Chi Tiêu
+                                    </div>
+                                </label>
+                                <label class="cursor-pointer">
+                                    <input type="radio" name="trans-type" value="income" onchange="updateCategoryOptions()" class="peer hidden">
+                                    <div class="py-2.5 text-center text-sm font-semibold rounded-xl border border-gray-200 dark:border-gray-700 peer-checked:bg-emerald-500 peer-checked:text-white peer-checked:border-emerald-500 transition-all text-gray-700 dark:text-gray-300">
+                                        <i class="fa-solid fa-plus-circle mr-1"></i> Thu Nhập
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Amount -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Số Tiền (VNĐ)</label>
+                            <input type="number" id="trans-amount" required placeholder="0" min="1" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500 font-semibold text-lg">
+                        </div>
+
+                        <!-- Category -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Danh Mục</label>
+                            <select id="trans-category" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                                <!-- JS Populated -->
+                            </select>
+                        </div>
+
+                        <!-- Date -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Ngày Tháng</label>
+                            <input type="date" id="trans-date" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+
+                        <!-- Note -->
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Ghi Chú</label>
+                            <input type="text" id="trans-note" placeholder="VD: Mua đồ ăn sáng, Lương tháng 10..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                        </div>
+
+                        <!-- Form Action Buttons -->
+                        <div class="flex gap-2 pt-2">
+                            <button type="submit" class="flex-1 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 px-4 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-floppy-disk"></i> Lưu Giao Dịch
+                            </button>
+                            <button type="button" id="btn-cancel-edit" onclick="resetForm()" class="hidden bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-semibold py-3 px-4 rounded-xl transition-all">
+                                Hủy
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Transaction History List -->
+                <div class="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm flex flex-col h-full">
+                    <!-- Filters & Search Bar -->
+                    <div class="flex flex-col sm:flex-row gap-3 justify-between items-center mb-6">
+                        <h4 class="text-lg font-bold text-gray-900 dark:text-white w-full sm:w-auto">Lịch Sử Giao Dịch</h4>
+                        <div class="flex flex-wrap sm:flex-nowrap gap-2 w-full sm:w-auto">
+                            <!-- Search Input -->
+                            <div class="relative w-full sm:w-48">
+                                <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                                <input type="text" id="filter-search" oninput="renderTransactions()" placeholder="Tìm kiếm..." class="w-full pl-8 pr-3 py-1.5 text-sm rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <!-- Type Filter -->
+                            <select id="filter-type" onchange="renderTransactions()" class="py-1.5 px-3 text-sm rounded-lg border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                                <option value="all">Tất cả loại</option>
+                                <option value="income">Thu Nhập</option>
+                                <option value="expense">Chi Tiêu</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Transactions Table -->
+                    <div class="overflow-x-auto flex-grow">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="text-xs font-semibold text-gray-400 dark:text-gray-500 border-b border-gray-100 dark:border-gray-700 pb-2">
+                                    <th class="p-3">NGÀY</th>
+                                    <th class="p-3">DANH MỤC</th>
+                                    <th class="p-3">GHI CHÚ</th>
+                                    <th class="p-3 text-right">SỐ TIỀN</th>
+                                    <th class="p-3 text-center">THAO TÁC</th>
+                                </tr>
+                            </thead>
+                            <tbody id="full-transactions-list" class="divide-y divide-gray-100 dark:divide-gray-700 text-sm">
+                                <!-- JS Inject -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= TAB 3: BUDGETS ================= -->
+        <section id="tab-budgets" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Hạn Mức Chi Tiêu</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Thiết lập ngân sách hàng tháng cho từng danh mục để kiểm soát tài chính.</p>
+                </div>
+                <button onclick="openBudgetModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-plus"></i> Đặt Hạn Mức
+                </button>
+            </div>
+
+            <!-- Budget Cards Grid -->
+            <div id="budgets-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- JS Inject -->
+            </div>
+        </section>
+
+        <!-- ================= TAB 4: SAVINGS ================= -->
+        <section id="tab-savings" class="tab-content hidden space-y-6">
+            <div class="flex justify-between items-center bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">Mục Tiêu Tiết Kiệm</h3>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">Lên kế hoạch và tích lũy cho những dự định tương lai của bạn.</p>
+                </div>
+                <button onclick="openSavingModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-xl shadow-lg shadow-emerald-600/30 transition-all flex items-center gap-2">
+                    <i class="fa-solid fa-piggy-bank"></i> Tạo Mục Tiêu
+                </button>
+            </div>
+
+            <!-- Savings Goals Grid -->
+            <div id="savings-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- JS Inject -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- MODAL: Budget Set -->
+    <div id="modal-budget" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-gray-100 dark:border-gray-700">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-calculator text-emerald-500"></i> Thiết Lập Hạn Mức Chi
+            </h3>
+            <form onsubmit="handleSaveBudget(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Danh Mục</label>
+                    <select id="budget-category" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+                        <!-- Expense categories filled by JS -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Hạn Mức Tháng (VNĐ)</label>
+                    <input type="number" id="budget-amount" required placeholder="0" min="1000" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-semibold">
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeBudgetModal()" class="px-4 py-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 font-medium">Hủy</button>
+                    <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium">Lưu Hạn Mức</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL: Saving Goal Set -->
+    <div id="modal-saving" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl border border-gray-100 dark:border-gray-700">
+            <h3 class="text-lg font-bold text-gray-900 dark:text-white flex items-center gap-2">
+                <i class="fa-solid fa-piggy-bank text-emerald-500"></i> Mục Tiêu Tiết Kiệm
+            </h3>
+            <form onsubmit="handleSaveSaving(event)" class="space-y-4">
+                <input type="hidden" id="saving-id">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Tên Mục Tiêu</label>
+                    <input type="text" id="saving-name" required placeholder="VD: Mua Laptop, Đi du lịch..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Số Tiền Mục Tiêu (VNĐ)</label>
+                    <input type="number" id="saving-target" required placeholder="0" min="1000" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-semibold">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Đã Tích Lũy Bắt Đầu (VNĐ)</label>
+                    <input type="number" id="saving-current" required placeholder="0" min="0" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white font-semibold">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-1">Hạn Chót Tích Lũy</label>
+                    <input type="date" id="saving-date" required class="w-full px-4 py-2.5 rounded-xl border border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+                </div>
+                <div class="flex justify-end gap-2 pt-2">
+                    <button type="button" onclick="closeSavingModal()" class="px-4 py-2 rounded-xl text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 font-medium">Hủy</button>
+                    <button type="submit" class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium">Lưu Mục Tiêu</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Core Application Logic -->
+    <script>
+        // Default Master Data Categories
+        const CATEGORIES = {
+            expense: [
+                { id: 'food', name: 'Ăn uống', icon: 'fa-utensils', color: 'bg-orange-500' },
+                { id: 'transport', name: 'Di chuyển', icon: 'fa-car', color: 'bg-blue-500' },
+                { id: 'shopping', name: 'Mua sắm', icon: 'fa-bag-shopping', color: 'bg-pink-500' },
+                { id: 'bills', name: 'Hóa đơn & Tiện ích', icon: 'fa-file-invoice-dollar', color: 'bg-amber-500' },
+                { id: 'entertainment', name: 'Giải trí', icon: 'fa-gamepad', color: 'bg-purple-500' },
+                { id: 'health', name: 'Sức khỏe', icon: 'fa-heart-pulse', color: 'bg-rose-500' },
+                { id: 'other_exp', name: 'Chi tiêu khác', icon: 'fa-ellipsis', color: 'bg-gray-500' }
+            ],
+            income: [
+                { id: 'salary', name: 'Lương thưởng', icon: 'fa-money-bill-wave', color: 'bg-emerald-500' },
+                { id: 'investment', name: 'Đầu tư', icon: 'fa-chart-line', color: 'bg-indigo-500' },
+                { id: 'bonus', name: 'Thưởng / Quà tặng', icon: 'fa-gift', color: 'bg-teal-500' },
+                { id: 'other_inc', name: 'Thu nhập khác', icon: 'fa-coins', color: 'bg-cyan-500' }
+            ]
+        };
+
+        // App State
+        let transactions = JSON.parse(localStorage.getItem('fin_transactions')) || [];
+        let budgets = JSON.parse(localStorage.getItem('fin_budgets')) || {};
+        let savings = JSON.parse(localStorage.getItem('fin_savings')) || [];
+
+        // Chart Instances
+        let expenseChart = null;
+        let trendChart = null;
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set Default Date to Today
+            document.getElementById('trans-date').valueAsDate = new Date();
+            
+            // Populate Form Categories
+            updateCategoryOptions();
+
+            // Populate Budget Modal Options
+            const budgetCatSelect = document.getElementById('budget-category');
+            budgetCatSelect.innerHTML = CATEGORIES.expense.map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+
+            // Render All Views
+            updateDashboard();
+            renderTransactions();
+            renderBudgets();
+            renderSavings();
+        });
+
+        // ================= NAVIGATION =================
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            // Remove active styles from nav
+            document.querySelectorAll('.nav-tab').forEach(el => {
+                el.classList.remove('bg-emerald-500', 'text-white', 'shadow-md');
+                el.classList.add('text-gray-600', 'dark:text-gray-300');
+            });
+
+            // Show current tab
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            
+            // Style current nav button
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if (activeNav) {
+                activeNav.classList.add('bg-emerald-500', 'text-white', 'shadow-md');
+                activeNav.classList.remove('text-gray-600', 'dark:text-gray-300');
+            }
+
+            // Refresh charts if on dashboard
+            if (tabId === 'dashboard') {
+                updateDashboard();
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleTheme() {
+            document.documentElement.classList.toggle('dark');
+        }
+
+        // ================= TRANSACTIONS MANAGEMENT =================
+        function updateCategoryOptions() {
+            const type = document.querySelector('input[name="trans-type"]:checked').value;
+            const catSelect = document.getElementById('trans-category');
+            catSelect.innerHTML = CATEGORIES[type].map(c => `<option value="${c.id}">${c.name}</option>`).join('');
+        }
+
+        function handleSaveTransaction(e) {
+            e.preventDefault();
+            const id = document.getElementById('trans-id').value;
+            const type = document.querySelector('input[name="trans-type"]:checked').value;
+            const amount = parseFloat(document.getElementById('trans-amount').value);
+            const category = document.getElementById('trans-category').value;
+            const date = document.getElementById('trans-date').value;
+            const note = document.getElementById('trans-note').value;
+
+            if (id) {
+                // Update existing
+                const index = transactions.findIndex(t => t.id === id);
+                if (index !== -1) {
+                    transactions[index] = { id, type, amount, category, date, note };
+                }
+            } else {
+                // Create new
+                const newTrans = {
+                    id: Date.now().toString(),
+                    type,
+                    amount,
+                    category,
+                    date,
+                    note
+                };
+                transactions.unshift(newTrans);
+            }
+
+            saveData();
+            resetForm();
+            updateDashboard();
+            renderTransactions();
+            renderBudgets();
+        }
+
+        function resetForm() {
+            document.getElementById('transaction-form').reset();
+            document.getElementById('trans-id').value = '';
+            document.getElementById('trans-date').valueAsDate = new Date();
+            document.getElementById('form-title').innerHTML = `<i class="fa-solid fa-plus-circle text-emerald-500"></i> Thêm Giao Dịch Mới`;
+            document.getElementById('btn-cancel-edit').classList.add('hidden');
+            updateCategoryOptions();
+        }
+
+        function editTransaction(id) {
+            const trans = transactions.find(t => t.id === id);
+            if (!trans) return;
+
+            document.getElementById('trans-id').value = trans.id;
+            document.querySelector(`input[name="trans-type"][value="${trans.type}"]`).checked = true;
+            updateCategoryOptions();
+            document.getElementById('trans-amount').value = trans.amount;
+            document.getElementById('trans-category').value = trans.category;
+            document.getElementById('trans-date').value = trans.date;
+            document.getElementById('trans-note').value = trans.note;
+
+            document.getElementById('form-title').innerHTML = `<i class="fa-solid fa-pen-to-square text-amber-500"></i> Chỉnh Sửa Giao Dịch`;
+            document.getElementById('btn-cancel-edit').classList.remove('hidden');
+
+            // Scroll to form on mobile
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function deleteTransaction(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa giao dịch này không?')) {
+                transactions = transactions.filter(t => t.id !== id);
+                saveData();
+                updateDashboard();
+                renderTransactions();
+                renderBudgets();
+            }
+        }
+
+        function renderTransactions() {
+            const search = document.getElementById('filter-search').value.toLowerCase();
+            const filterType = document.getElementById('filter-type').value;
+
+            const filtered = transactions.filter(t => {
+                const matchesSearch = t.note.toLowerCase().includes(search) || getCategoryName(t.type, t.category).toLowerCase().includes(search);
+                const matchesType = filterType === 'all' || t.type === filterType;
+                return matchesSearch && matchesType;
+            });
+
+            const tbody = document.getElementById('full-transactions-list');
+            if (filtered.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="5" class="text-center py-8 text-gray-400">Không có giao dịch nào</td></tr>`;
+                return;
+            }
+
+            tbody.innerHTML = filtered.map(t => {
+                const cat = getCategoryObj(t.type, t.category);
+                const isIncome = t.type === 'income';
+                return `
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors">
+                        <td class="p-3 text-gray-500 dark:text-gray-400 font-mono text-xs">${formatDate(t.date)}</td>
+                        <td class="p-3">
+                            <span class="inline-flex items-center gap-2 font-medium text-gray-800 dark:text-gray-200">
+                                <span class="w-6 h-6 rounded-full ${cat.color} text-white text-xs flex items-center justify-center">
+                                    <i class="fa-solid ${cat.icon}"></i>
+                                </span>
+                                ${cat.name}
+                            </span>
+                        </td>
+                        <td class="p-3 text-gray-600 dark:text-gray-300 max-w-xs truncate">${t.note || '-'}</td>
+                        <td class="p-3 text-right font-bold ${isIncome ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">
+                            ${isIncome ? '+' : '-'}${formatMoney(t.amount)}
+                        </td>
+                        <td class="p-3 text-center">
+                            <button onclick="editTransaction('${t.id}')" class="p-1.5 text-gray-400 hover:text-amber-500 transition-colors"><i class="fa-solid fa-pen"></i></button>
+                            <button onclick="deleteTransaction('${t.id}')" class="p-1.5 text-gray-400 hover:text-rose-500 transition-colors"><i class="fa-solid fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // ================= DASHBOARD & CHARTS =================
+        function updateDashboard() {
+            let totalIncome = 0;
+            let totalExpense = 0;
+
+            transactions.forEach(t => {
+                if (t.type === 'income') totalIncome += t.amount;
+                if (t.type === 'expense') totalExpense += t.amount;
+            });
+
+            const balance = totalIncome - totalExpense;
+
+            // Render stats
+            document.getElementById('stat-balance').innerText = formatMoney(balance);
+            document.getElementById('stat-income').innerText = '+' + formatMoney(totalIncome);
+            document.getElementById('stat-expense').innerText = '-' + formatMoney(totalExpense);
+
+            // Render Recent Transactions
+            const recentTbody = document.getElementById('recent-transactions-list');
+            const recent = transactions.slice(0, 5);
+            
+            if (recent.length === 0) {
+                recentTbody.innerHTML = `<tr><td colspan="5" class="text-center py-6 text-gray-400">Chưa có dữ liệu giao dịch</td></tr>`;
+            } else {
+                recentTbody.innerHTML = recent.map(t => {
+                    const cat = getCategoryObj(t.type, t.category);
+                    const isIncome = t.type === 'income';
+                    return `
+                        <tr>
+                            <td class="p-3 text-gray-500 dark:text-gray-400 font-mono text-xs">${formatDate(t.date)}</td>
+                            <td class="p-3">
+                                <span class="inline-flex items-center gap-1.5 font-medium">
+                                    <span class="w-2 h-2 rounded-full ${cat.color}"></span> ${cat.name}
+                                </span>
+                            </td>
+                            <td class="p-3 text-gray-500 dark:text-gray-400 truncate max-w-xs">${t.note || '-'}</td>
+                            <td class="p-3 text-right font-bold ${isIncome ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}">
+                                ${isIncome ? '+' : '-'}${formatMoney(t.amount)}
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            }
+
+            // Render Doughnut Chart
+            renderCategoryChart();
+            // Render Trend Chart
+            renderTrendChart();
+        }
+
+        function renderCategoryChart() {
+            const ctx = document.getElementById('chart-expense-category').getContext('2d');
+            
+            // Calculate expenses per category
+            const categorySums = {};
+            CATEGORIES.expense.forEach(c => categorySums[c.id] = 0);
+            
+            transactions.filter(t => t.type === 'expense').forEach(t => {
+                categorySums[t.category] = (categorySums[t.category] || 0) + t.amount;
+            });
+
+            const labels = [];
+            const data = [];
+            const colors = ['#f97316', '#3b82f6', '#ec4899', '#f59e0b', '#a855f7', '#f43f5e', '#6b7280'];
+
+            CATEGORIES.expense.forEach((c, idx) => {
+                if (categorySums[c.id] > 0) {
+                    labels.push(c.name);
+                    data.push(categorySums[c.id]);
+                }
+            });
+
+            if (expenseChart) expenseChart.destroy();
+
+            expenseChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels.length ? labels : ['Chưa có chi tiêu'],
+                    datasets: [{
+                        data: data.length ? data : [1],
+                        backgroundColor: data.length ? colors : ['#e5e7eb'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
+        }
+
+        function renderTrendChart() {
+            const ctx = document.getElementById('chart-monthly-trend').getContext('2d');
+            
+            // Calculate last 6 months
+            const months = [];
+            const incomeData = [0, 0, 0, 0, 0, 0];
+            const expenseData = [0, 0, 0, 0, 0, 0];
+
+            for (let i = 5; i >= 0; i--) {
+                const d = new Date();
+                d.setMonth(d.getMonth() - i);
+                months.push(`Tháng ${d.getMonth() + 1}`);
+            }
+
+            // Aggregate transaction data
+            const now = new Date();
+            transactions.forEach(t => {
+                const tDate = new Date(t.date);
+                const monthDiff = (now.getFullYear() - tDate.getFullYear()) * 12 + (now.getMonth() - tDate.getMonth());
+                if (monthDiff >= 0 && monthDiff < 6) {
+                    const index = 5 - monthDiff;
+                    if (t.type === 'income') incomeData[index] += t.amount;
+                    if (t.type === 'expense') expenseData[index] += t.amount;
+                }
+            });
+
+            if (trendChart) trendChart.destroy();
+
+            trendChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [
+                        { label: 'Thu Nhập', data: incomeData, backgroundColor: '#10b981', borderRadius: 6 },
+                        { label: 'Chi Tiêu', data: expenseData, backgroundColor: '#f43f5e', borderRadius: 6 }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { position: 'bottom' } }
+                }
+            });
+        }
+
+        // ================= BUDGETS MANAGEMENT =================
+        function openBudgetModal() { document.getElementById('modal-budget').classList.remove('hidden'); }
+        function closeBudgetModal() { document.getElementById('modal-budget').classList.add('hidden'); }
+
+        function handleSaveBudget(e) {
+            e.preventDefault();
+            const cat = document.getElementById('budget-category').value;
+            const amount = parseFloat(document.getElementById('budget-amount').value);
+
+            budgets[cat] = amount;
+            saveData();
+            closeBudgetModal();
+            renderBudgets();
+        }
+
+        function renderBudgets() {
+            const grid = document.getElementById('budgets-grid');
+            
+            // Calculate current month expenses per category
+            const currentMonthExpenses = {};
+            const now = new Date();
+            
+            transactions.filter(t => {
+                const d = new Date(t.date);
+                return t.type === 'expense' && d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear();
+            }).forEach(t => {
+                currentMonthExpenses[t.category] = (currentMonthExpenses[t.category] || 0) + t.amount;
+            });
+
+            const keys = Object.keys(budgets);
+            if (keys.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700">
+                        <i class="fa-solid fa-calculator text-4xl text-gray-300 mb-3"></i>
+                        <p class="text-gray-500 dark:text-gray-400">Chưa có hạn mức nào được thiết lập.</p>
+                    </div>`;
+                return;
+            }
+
+            grid.innerHTML = keys.map(catId => {
+                const cat = getCategoryObj('expense', catId);
+                const limit = budgets[catId];
+                const spent = currentMonthExpenses[catId] || 0;
+                const percent = Math.min(Math.round((spent / limit) * 100), 100);
+
+                let progressColor = 'bg-emerald-500';
+                if (percent >= 80) progressColor = 'bg-amber-500';
+                if (percent >= 100) progressColor = 'bg-rose-500';
+
+                return `
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm relative">
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl ${cat.color} text-white flex items-center justify-center">
+                                    <i class="fa-solid ${cat.icon}"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-gray-900 dark:text-white">${cat.name}</h5>
+                                    <span class="text-xs text-gray-400">Hạn mức tháng này</span>
+                                </div>
+                            </div>
+                            <button onclick="deleteBudget('${catId}')" class="text-gray-400 hover:text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold">
+                                <span class="text-gray-500 dark:text-gray-400">Đã chi: ${formatMoney(spent)}</span>
+                                <span class="text-gray-900 dark:text-white">${formatMoney(limit)}</span>
+                            </div>
+                            <div class="w-full h-3 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                                <div class="h-full ${progressColor} transition-all duration-300" style="width: ${percent}%"></div>
+                            </div>
+                            <div class="flex justify-between text-xs text-gray-400 pt-1">
+                                <span>${percent}% hạn mức</span>
+                                <span>${spent > limit ? 'Vượt: ' + formatMoney(spent - limit) : 'Còn lại: ' + formatMoney(limit - spent)}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function deleteBudget(catId) {
+            delete budgets[catId];
+            saveData();
+            renderBudgets();
+        }
+
+        // ================= SAVINGS GOALS MANAGEMENT =================
+        function openSavingModal() { document.getElementById('modal-saving').classList.remove('hidden'); }
+        function closeSavingModal() { document.getElementById('modal-saving').classList.add('hidden'); }
+
+        function handleSaveSaving(e) {
+            e.preventDefault();
+            const name = document.getElementById('saving-name').value;
+            const target = parseFloat(document.getElementById('saving-target').value);
+            const current = parseFloat(document.getElementById('saving-current').value);
+            const date = document.getElementById('saving-date').value;
+
+            savings.push({
+                id: Date.now().toString(),
+                name,
+                target,
+                current,
+                date
+            });
+
+            saveData();
+            closeSavingModal();
+            renderSavings();
+        }
+
+        function renderSavings() {
+            const grid = document.getElementById('savings-grid');
+
+            if (savings.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white dark:bg-gray-800 rounded-2xl border border-gray-100 dark:border-gray-700">
+                        <i class="fa-solid fa-piggy-bank text-4xl text-gray-300 mb-3"></i>
+                        <p class="text-gray-500 dark:text-gray-400">Chưa có mục tiêu tiết kiệm nào.</p>
+                    </div>`;
+                return;
+            }
+
+            grid.innerHTML = savings.map(s => {
+                const percent = Math.min(Math.round((s.current / s.target) * 100), 100);
+                return `
+                    <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 shadow-sm space-y-4">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h5 class="font-bold text-gray-900 dark:text-white text-lg">${s.name}</h5>
+                                <span class="text-xs text-gray-400">Hạn chót: ${formatDate(s.date)}</span>
+                            </div>
+                            <button onclick="deleteSaving('${s.id}')" class="text-gray-400 hover:text-rose-500"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-sm font-semibold">
+                                <span class="text-emerald-600 dark:text-emerald-400">${formatMoney(s.current)}</span>
+                                <span class="text-gray-400">Mục tiêu: ${formatMoney(s.target)}</span>
+                            </div>
+                            <div class="w-full h-3 bg-gray-100 dark:bg-gray-700 rounded-full overflow-hidden">
+                                <div class="h-full bg-emerald-500 transition-all duration-300" style="width: ${percent}%"></div>
+                            </div>
+                            <div class="text-right text-xs font-bold text-emerald-600 dark:text-emerald-400">
+                                ${percent}% Hoàn thành
+                            </div>
+                        </div>
+
+                        <button onclick="addDeposit('${s.id}')" class="w-full py-2 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 rounded-xl font-semibold text-sm hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all">
+                            + Nạp Thêm Tiền
+                        </button>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function addDeposit(id) {
+            const amountStr = prompt('Nhập số tiền muốn tích lũy thêm (VNĐ):');
+            if (!amountStr) return;
+            const amount = parseFloat(amountStr);
+            if (isNaN(amount) || amount <= 0) return;
+
+            const saving = savings.find(s => s.id === id);
+            if (saving) {
+                saving.current += amount;
+                saveData();
+                renderSavings();
+            }
+        }
+
+        function deleteSaving(id) {
+            if (confirm('Xóa mục tiêu tiết kiệm này?')) {
+                savings = savings.filter(s => s.id !== id);
+                saveData();
+                renderSavings();
+            }
+        }
+
+        // ================= HELPERS & BACKUP =================
+        function getCategoryObj(type, catId) {
+            const list = CATEGORIES[type] || [];
+            return list.find(c => c.id === catId) || { name: catId, icon: 'fa-tag', color: 'bg-gray-400' };
+        }
+
+        function getCategoryName(type, catId) {
+            return getCategoryObj(type, catId).name;
+        }
+
+        function formatMoney(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const d = new Date(dateStr);
+            return `${d.getDate().toString().padStart(2, '0')}/${(d.getMonth() + 1).toString().padStart(2, '0')}/${d.getFullYear()}`;
+        }
+
+        function saveData() {
+            localStorage.setItem('fin_transactions', JSON.stringify(transactions));
+            localStorage.setItem('fin_budgets', JSON.stringify(budgets));
+            localStorage.setItem('fin_savings', JSON.stringify(savings));
+        }
+
+        function exportData() {
+            const data = { transactions, budgets, savings };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `finmanager_backup_${new Date().toISOString().slice(0, 10)}.json`;
+            a.click();
+        }
+
+        function importData(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                try {
+                    const data = JSON.parse(evt.target.result);
+                    if (data.transactions) transactions = data.transactions;
+                    if (data.budgets) budgets = data.budgets;
+                    if (data.savings) savings = data.savings;
+
+                    saveData();
+                    updateDashboard();
+                    renderTransactions();
+                    renderBudgets();
+                    renderSavings();
+                    alert('Đã nhập dữ liệu thành công!');
+                } catch (err) {
+                    alert('File dữ liệu không hợp lệ!');
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
