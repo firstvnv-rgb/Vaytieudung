@@ -12,13 +12,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f19; color: #f8fafc; }
         
-        /* Hiệu ứng Viền LED Bày Sản Phẩm Chạy Xoay Quanh (Glowing Border Animation) */
+        /* Hiệu ứng Viền LED Bày Sản Phẩm Chạy Xoay Quanh */
         .glow-border-card {
             position: relative;
             border-radius: 1rem;
             overflow: hidden;
             background: #0f172a;
-            padding: 2px; /* Độ dày dải viền phát sáng */
+            padding: 2px;
             z-index: 1;
         }
 
@@ -40,7 +40,6 @@
             z-index: -2;
         }
 
-        /* Thẻ đặc biệt VIB dùng viền sáng màu Cam/Vàng */
         .glow-border-vib::before {
             background: conic-gradient(
                 transparent, 
@@ -64,7 +63,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Hiệu ứng ánh kim trên nút */
         .btn-shine {
             position: relative;
             overflow: hidden;
@@ -89,7 +87,7 @@
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen pb-40">
 
-    <!-- Header sang trọng (Không logo Zalo ở trên, chữ số điện thoại to rõ) -->
+    <!-- Header sang trọng -->
     <header class="bg-slate-900/90 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
         <div class="max-w-md mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center space-x-2.5">
@@ -101,7 +99,6 @@
                     <p class="text-xs text-slate-400">Giải ngân nhanh online</p>
                 </div>
             </div>
-            <!-- Nút gọi điện với icon phone quen thuộc, cỡ chữ SĐT to -->
             <a href="https://zalo.me/0878665588" target="_blank" class="bg-emerald-500 hover:bg-emerald-600 text-white font-extrabold px-3.5 py-2 rounded-xl text-sm md:text-base flex items-center shadow-md shadow-emerald-500/20 transition active:scale-95">
                 <i class="fa-solid fa-phone mr-2 text-sm"></i> 0878.66.55.88
             </a>
@@ -129,7 +126,7 @@
                 <div class="bg-gradient-to-r from-red-600 to-rose-700 px-4 py-2.5 flex items-center justify-between">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-red-600 font-extrabold text-xs px-2 py-0.5 rounded">LOTTE</span>
-                        <h3 class="font-bold text-white text-base">LOTTE FINANCE</h3>
+                        <h3 class="font-bold text-white text-base">FINANCE</h3>
                     </div>
                     <span class="bg-black/20 text-white text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">Duyệt thần tốc</span>
                 </div>
@@ -156,8 +153,9 @@
                         </div>
                     </div>
 
-                    <div class="text-xs text-slate-300 space-y-1 pl-1">
-                        <p class="text-slate-300 text-xs"><i class="fa-solid fa-user-check text-red-500 mr-1.5"></i>Dành cho: Công chức, NV văn phòng, công nhân, phụ nữ...</p>
+                    <div class="bg-red-950/30 border border-red-900/40 p-3 rounded-xl space-y-1 text-xs text-slate-200">
+                        <p class="font-bold text-red-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-user-check text-red-500 mr-1.5"></i> Đối tượng hỗ trợ:</p>
+                        <p class="pl-4">• Công chức, NV văn phòng, công nhân, phụ nữ...</p>
                     </div>
 
                     <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 hover:to-rose-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-red-600/20 text-sm uppercase tracking-wide transition active:scale-[0.98]">
@@ -168,13 +166,13 @@
         </div>
 
 
-        <!-- 2. SHINHAN FINANCE -->
+        <!-- 2. SHINHAN FINANCE (Đã sửa không còn lặp từ Shinhan) -->
         <div class="glow-border-card shadow-xl">
             <div class="glow-border-inner">
                 <div class="bg-gradient-to-r from-blue-700 to-indigo-800 px-4 py-2.5 flex items-center justify-between">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-blue-700 font-extrabold text-xs px-2 py-0.5 rounded">SHINHAN</span>
-                        <h3 class="font-bold text-white text-base">SHINHAN FINANCE</h3>
+                        <h3 class="font-bold text-white text-base">FINANCE</h3>
                     </div>
                     <span class="bg-black/20 text-white text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">Dễ dàng & Nhẹ nhàng</span>
                 </div>
@@ -206,9 +204,9 @@
                 <div class="bg-gradient-to-r from-emerald-600 to-teal-700 px-4 py-2.5 flex items-center justify-between">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-emerald-700 font-extrabold text-xs px-2 py-0.5 rounded">VPBANK</span>
-                        <h3 class="font-bold text-white text-base">CẦN TIỀN? CÓ LIỀN TRONG 05'</h3>
+                        <h3 class="font-bold text-white text-base">VAY TIÊU DÙNG ONLINE</h3>
                     </div>
-                    <span class="bg-black/20 text-white text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">Duyệt 05 Phút</span>
+                    <span class="bg-black/20 text-white text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">Duyệt 05'</span>
                 </div>
 
                 <div class="p-4 bg-slate-950/60 flex justify-center border-b border-slate-800/80">
@@ -232,7 +230,7 @@
         </div>
 
 
-        <!-- 4. THẺ TÍN DỤNG VIB (CUỐI CÙNG) -->
+        <!-- 4. THẺ TÍN DỤNG VIB (HOT DỊCH VỤ) -->
         <div class="glow-border-card glow-border-vib shadow-2xl relative">
             <div class="glow-border-inner">
                 <div class="absolute top-0 right-0 bg-gradient-to-l from-orange-500 to-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">HOT DỊCH VỤ</div>
@@ -240,7 +238,7 @@
                 <div class="bg-gradient-to-r from-blue-900 via-blue-950 to-orange-600 px-4 py-2.5 flex items-center justify-between border-b border-orange-500/20">
                     <div class="flex items-center space-x-2">
                         <span class="bg-orange-500 text-white font-black text-xs px-2 py-0.5 rounded shadow-sm">VIB</span>
-                        <h3 class="font-extrabold text-white text-base tracking-wide">MỞ THẺ TÍN DỤNG VIB</h3>
+                        <h3 class="font-extrabold text-white text-base tracking-wide">MỞ THẺ TÍN DỤNG</h3>
                     </div>
                 </div>
 
@@ -267,7 +265,7 @@
 
     </main>
 
-    <!-- Thanh Zalo Cố Định Dưới Cùng (Hiện Logo Zalo.webp & Cỡ chữ phóng to nổi bật) -->
+    <!-- Thanh Zalo Cố Định Dưới Cùng -->
     <div class="fixed bottom-3 left-0 right-0 px-4 z-40 max-w-md mx-auto">
         <div class="bg-slate-900/95 backdrop-blur-lg border border-slate-700/80 p-3 rounded-2xl shadow-2xl flex items-center justify-between">
             <div class="flex items-center space-x-3">
