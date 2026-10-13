@@ -40,15 +40,11 @@
             z-index: -2;
         }
 
-        .glow-border-vib::before {
-            background: conic-gradient(
-                transparent, 
-                rgba(249, 115, 22, 0.9), 
-                rgba(234, 179, 8, 0.9), 
-                rgba(59, 130, 246, 0.8), 
-                transparent 60%
-            ) !important;
-        }
+        /* Viền sáng riêng cho từng hãng theo phong cách VIB */
+        .glow-border-lotte::before { background: conic-gradient(transparent, rgba(239, 68, 68, 0.9), rgba(244, 63, 94, 0.9), rgba(59, 130, 246, 0.8), transparent 60%) !important; }
+        .glow-border-shinhan::before { background: conic-gradient(transparent, rgba(37, 99, 235, 0.9), rgba(99, 102, 241, 0.9), rgba(16, 185, 129, 0.8), transparent 60%) !important; }
+        .glow-border-vpbank::before { background: conic-gradient(transparent, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9), rgba(59, 130, 246, 0.8), transparent 60%) !important; }
+        .glow-border-vib::before { background: conic-gradient(transparent, rgba(249, 115, 22, 0.9), rgba(234, 179, 8, 0.9), rgba(59, 130, 246, 0.8), transparent 60%) !important; }
 
         .glow-border-inner {
             background: #0f172a;
@@ -117,18 +113,19 @@
         </div>
     </section>
 
-    <!-- Danh sách dịch vụ sản phẩm -->
+    <!-- Danh sách dịch vụ sản phẩm chuẩn phong cách VIB -->
     <main class="max-w-md mx-auto px-4 space-y-7 mt-2">
 
         <!-- 1. LOTTE FINANCE -->
-        <div class="glow-border-card shadow-xl">
+        <div class="glow-border-card glow-border-lotte shadow-xl relative">
             <div class="glow-border-inner">
-                <div class="bg-gradient-to-r from-red-600 to-rose-700 px-4 py-2.5 flex items-center justify-between">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-red-600 to-rose-500 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">THẦN TỐC</div>
+
+                <div class="bg-gradient-to-r from-red-600 via-rose-700 to-red-900 px-4 py-2.5 flex items-center justify-between border-b border-red-500/20">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-red-600 font-extrabold text-xs px-2 py-0.5 rounded">LOTTE</span>
                         <h3 class="font-bold text-white text-base">FINANCE</h3>
                     </div>
-                    <span class="bg-black/20 text-white text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">Duyệt thần tốc</span>
                 </div>
 
                 <div class="p-4 bg-slate-950/60 flex justify-center border-b border-slate-800/80">
@@ -166,15 +163,16 @@
         </div>
 
 
-        <!-- 2. SHINHAN FINANCE (Đã sửa không còn lặp từ Shinhan) -->
-        <div class="glow-border-card shadow-xl">
+        <!-- 2. SHINHAN FINANCE -->
+        <div class="glow-border-card glow-border-shinhan shadow-xl relative">
             <div class="glow-border-inner">
-                <div class="bg-gradient-to-r from-blue-700 to-indigo-800 px-4 py-2.5 flex items-center justify-between">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-blue-600 to-indigo-500 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">ONLINE 100%</div>
+
+                <div class="bg-gradient-to-r from-blue-700 via-indigo-800 to-blue-950 px-4 py-2.5 flex items-center justify-between border-b border-blue-500/20">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-blue-700 font-extrabold text-xs px-2 py-0.5 rounded">SHINHAN</span>
                         <h3 class="font-bold text-white text-base">FINANCE</h3>
                     </div>
-                    <span class="bg-black/20 text-white text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">Dễ dàng & Nhẹ nhàng</span>
                 </div>
 
                 <div class="p-4 bg-slate-950/60 flex justify-center border-b border-slate-800/80">
@@ -198,20 +196,22 @@
         </div>
 
 
-        <!-- 3. VPBANK -->
-        <div class="glow-border-card shadow-xl">
+        <!-- 3. VPBANK (Đã chỉnh màu nền khung khớp 100% với ảnh VPBank) -->
+        <div class="glow-border-card glow-border-vpbank shadow-xl relative">
             <div class="glow-border-inner">
-                <div class="bg-gradient-to-r from-emerald-600 to-teal-700 px-4 py-2.5 flex items-center justify-between">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-emerald-500 to-teal-500 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">DUYỆT 05'</div>
+
+                <div class="bg-gradient-to-r from-emerald-600 via-teal-700 to-emerald-900 px-4 py-2.5 flex items-center justify-between border-b border-emerald-500/20">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-emerald-700 font-extrabold text-xs px-2 py-0.5 rounded">VPBANK</span>
-                        <h3 class="font-bold text-white text-base">VAY TIÊU DÙNG ONLINE</h3>
+                        <h3 class="font-bold text-white text-xs md:text-sm whitespace-nowrap">VAY TIÊU DÙNG ONLINE</h3>
                     </div>
-                    <span class="bg-black/20 text-white text-xs font-medium px-2.5 py-1 rounded-full backdrop-blur-sm">Duyệt 05'</span>
                 </div>
 
+                <!-- Khung Nền Đệm Trùng Trội Khớp Màu Xanh VPBank Gốc (#008542) -->
                 <div class="p-4 bg-slate-950/60 flex justify-center border-b border-slate-800/80">
-                    <a href="https://shorten.asia/mjYv557t" target="_blank" class="block w-full max-w-[280px] h-36 rounded-2xl overflow-hidden shadow-md flex items-center justify-center transition hover:scale-[1.02] border border-emerald-500/40">
-                        <img src="Vpbank.jpeg" alt="VPBank" class="w-full h-full object-cover rounded-2xl">
+                    <a href="https://shorten.asia/mjYv557t" target="_blank" class="block w-full max-w-[280px] h-36 rounded-2xl overflow-hidden bg-[#008542] p-1.5 shadow-md flex items-center justify-center transition hover:scale-[1.02] border border-emerald-500/40">
+                        <img src="Vpbank.jpeg" alt="VPBank" class="w-full h-full object-contain rounded-xl">
                     </a>
                 </div>
 
