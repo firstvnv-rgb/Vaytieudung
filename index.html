@@ -43,6 +43,9 @@
         .glow-border-vpbank::before { 
             background: conic-gradient(transparent, rgba(16, 185, 129, 0.95), rgba(234, 179, 8, 0.9), rgba(20, 184, 166, 0.95), rgba(34, 197, 94, 0.9), transparent 60%) !important; 
         }
+        .glow-border-vietcredit::before { 
+            background: conic-gradient(transparent, rgba(239, 68, 68, 0.95), rgba(249, 115, 22, 0.95), rgba(234, 179, 8, 0.95), rgba(225, 29, 72, 0.9), transparent 60%) !important; 
+        }
         .glow-border-vib::before { 
             background: conic-gradient(transparent, rgba(249, 115, 22, 0.95), rgba(234, 179, 8, 0.95), rgba(59, 130, 246, 0.85), rgba(245, 158, 11, 0.9), transparent 60%) !important; 
         }
@@ -107,7 +110,7 @@
         <div class="absolute top-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-blue-600/15 rounded-full blur-3xl -z-10"></div>
         <div class="max-w-md mx-auto">
             <span class="inline-flex items-center gap-1.5 bg-slate-800/80 border border-slate-700 text-amber-400 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-2.5">
-                <i class="fa-solid fa-bolt text-xs"></i> Hỗ trợ hồ sơ toàn quốc không phí dịch vụ
+                <i class="fa-solid fa-bolt text-xs"></i> Hỗ trợ hồ sơ toàn quốc
             </span>
             <h2 class="text-2xl md:text-3xl font-extrabold text-white leading-tight">GÓI VAY & MỞ THẺ TÍN DỤNG</h2>
             <p class="text-slate-300 text-sm mt-1.5">Xét duyệt trực tuyến 100% – Chỉ cần CCCD gắn chip</p>
@@ -197,7 +200,7 @@
         </div>
 
 
-        <!-- 3. VPBANK (ẢNH TRÀN KHUẤT - KHÔNG DÙNG NỀN TRẮNG ĐỂ KHÔNG BỊ VIỀN TRẮNG LỆCH) -->
+        <!-- 3. VPBANK -->
         <div class="glow-border-card glow-border-vpbank shadow-2xl relative">
             <div class="glow-border-inner">
                 <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400 via-emerald-500 to-teal-600 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">DUYỆT 05'</div>
@@ -209,10 +212,9 @@
                     </div>
                 </div>
 
-                <!-- Khung Nền Chuẩn Màu Xanh VPBank (#008542) Làm Ảnh Tràn Viền Liền Mạch -->
                 <div class="p-4 bg-slate-950/60 flex justify-center border-b border-slate-800/80">
-                    <a href="https://shorten.asia/mjYv557t" target="_blank" class="block w-full max-w-[280px] h-36 rounded-2xl overflow-hidden bg-[#008542] shadow-md flex items-center justify-center transition hover:scale-[1.02]">
-                        <img src="Vpbank.jpeg" alt="VPBank" class="w-full h-full object-cover rounded-2xl">
+                    <a href="https://shorten.asia/mjYv557t" target="_blank" class="block w-full max-w-[280px] h-36 rounded-2xl overflow-hidden bg-white p-2 shadow-md flex items-center justify-center transition hover:scale-[1.02] border border-emerald-500/40">
+                        <img src="Vpbank.jpeg" alt="VPBank" class="w-full h-full object-contain rounded-xl">
                     </a>
                 </div>
 
@@ -231,7 +233,55 @@
         </div>
 
 
-        <!-- 4. THẺ TÍN DỤNG VIB -->
+        <!-- 4. VIETCREDIT (ĐÃ TÍCH HỢP LINK https://shorten.asia/M7zTw5M9) -->
+        <div class="glow-border-card glow-border-vietcredit shadow-2xl relative">
+            <div class="glow-border-inner">
+                <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400 via-orange-500 to-red-600 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">DUYỆT 3 PHÚT</div>
+
+                <div class="bg-gradient-to-r from-red-950 via-orange-900 to-amber-600 px-4 py-2.5 flex items-center justify-between border-b border-orange-500/20">
+                    <div class="flex items-center space-x-2">
+                        <span class="bg-white text-red-600 font-extrabold text-xs px-2 py-0.5 rounded shadow-sm">TÍN VAY</span>
+                        <h3 class="font-extrabold text-white text-base tracking-wide">VIETCREDIT</h3>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-slate-950/60 flex justify-center border-b border-slate-800/80">
+                    <a href="https://shorten.asia/M7zTw5M9" target="_blank" class="block w-full max-w-[280px] h-36 rounded-2xl overflow-hidden bg-white p-2 shadow-md flex items-center justify-center transition hover:scale-[1.02]">
+                        <img src="Vietcredit.jpeg" alt="VietCredit" class="w-full h-full object-contain rounded-xl">
+                    </a>
+                </div>
+
+                <div class="p-4 space-y-3">
+                    <div class="grid grid-cols-3 gap-2 text-center bg-gradient-to-r from-red-950/40 to-orange-950/30 border border-orange-900/40 p-2.5 rounded-xl">
+                        <div>
+                            <p class="text-xs text-slate-400">Giải ngân</p>
+                            <p class="font-bold text-amber-400 text-sm">Chỉ 03 phút</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400">Lãi suất từ</p>
+                            <p class="font-bold text-amber-400 text-sm">1,42%/tháng</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-400">Hạn mức đến</p>
+                            <p class="font-bold text-amber-400 text-sm">100 triệu</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-red-950/40 to-orange-950/30 border border-orange-900/40 p-3 rounded-xl space-y-1.5 text-xs text-slate-200">
+                        <p class="font-bold text-amber-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-circle-check text-amber-400 mr-1"></i> Ưu điểm Tín Vay VietCredit:</p>
+                        <p class="pl-4">• 0 phí ẩn - Lãi suất minh bạch chỉ từ 1.42%/tháng</p>
+                        <p class="pl-4">• Chỉ cần <strong>CCCD</strong> | Không chứng minh thu nhập</p>
+                    </div>
+
+                    <a href="https://shorten.asia/M7zTw5M9" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-slate-950 font-extrabold py-3.5 rounded-xl shadow-lg shadow-orange-500/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
+                        ĐĂNG KÝ VAY VIETCREDIT <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- 5. THẺ TÍN DỤNG VIB (ĐẶT Ở VỊ TRÍ CUỐI CÙNG) -->
         <div class="glow-border-card glow-border-vib shadow-2xl relative">
             <div class="glow-border-inner">
                 <div class="absolute top-0 right-0 bg-gradient-to-l from-orange-500 to-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">HOT DỊCH VỤ</div>
@@ -278,22 +328,4 @@
                     <p class="font-extrabold text-base md:text-lg text-amber-400 tracking-wide">Zalo: 0878.66.55.88</p>
                 </div>
             </div>
-            <a href="https://zalo.me/0878665588" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold transition shadow-md shadow-blue-600/30 active:scale-95 flex items-center">
-                Nhắn Zalo
-            </a>
-        </div>
-    </div>
-
-    <!-- Script nhận diện hệ điều hành cho Shinhan -->
-    <script>
-        function redirectShinhan() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                window.open("https://shorten.asia/uRaeyXNU", "_blank");
-            } else {
-                window.open("https://goecom.asia/CeJBGm8U", "_blank");
-            }
-        }
-    </script>
-</body>
-</html>
+            <a href="
