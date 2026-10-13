@@ -12,7 +12,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
         body { font-family: 'Plus Jakarta Sans', sans-serif; background: #0b0f19; color: #f8fafc; }
         
-        /* Hiệu ứng Viền LED Bày Sản Phẩm Chạy Xoay Quanh Đa Sắc Phong Cách VIB */
+        /* Hiệu ứng Viền LED Bày Sản Phẩm Chạy Xoay Quanh Phong Cách VIB */
         .glow-border-card {
             position: relative;
             border-radius: 1rem;
@@ -33,21 +33,21 @@
             z-index: -2;
         }
 
-        /* Phối dải màu viền LED rực rỡ đa sắc */
+        /* Tách màu viền LED chuẩn màu nhận diện từng thương hiệu */
         .glow-border-lotte::before { 
-            background: conic-gradient(transparent, rgba(244, 63, 94, 0.95), rgba(251, 113, 133, 0.9), rgba(234, 179, 8, 0.95), rgba(239, 68, 68, 0.9), transparent 60%) !important; 
+            background: conic-gradient(transparent, rgba(225, 29, 72, 0.95), rgba(244, 63, 94, 0.9), rgba(190, 18, 60, 0.95), transparent 60%) !important; 
         }
         .glow-border-shinhan::before { 
-            background: conic-gradient(transparent, rgba(59, 130, 246, 0.95), rgba(168, 85, 247, 0.95), rgba(236, 72, 153, 0.9), rgba(99, 102, 241, 0.9), transparent 60%) !important; 
+            background: conic-gradient(transparent, rgba(29, 78, 216, 0.95), rgba(37, 99, 235, 0.95), rgba(99, 102, 241, 0.9), transparent 60%) !important; 
         }
         .glow-border-vpbank::before { 
-            background: conic-gradient(transparent, rgba(16, 185, 129, 0.95), rgba(234, 179, 8, 0.9), rgba(20, 184, 166, 0.95), rgba(34, 197, 94, 0.9), transparent 60%) !important; 
+            background: conic-gradient(transparent, rgba(5, 150, 105, 0.95), rgba(16, 185, 129, 0.95), rgba(52, 211, 153, 0.9), transparent 60%) !important; 
         }
         .glow-border-vietcredit::before { 
-            background: conic-gradient(transparent, rgba(239, 68, 68, 0.95), rgba(249, 115, 22, 0.95), rgba(234, 179, 8, 0.95), rgba(225, 29, 72, 0.9), transparent 60%) !important; 
+            background: conic-gradient(transparent, rgba(220, 38, 38, 0.95), rgba(239, 68, 68, 0.95), rgba(185, 28, 28, 0.9), transparent 60%) !important; 
         }
         .glow-border-vib::before { 
-            background: conic-gradient(transparent, rgba(249, 115, 22, 0.95), rgba(234, 179, 8, 0.95), rgba(59, 130, 246, 0.85), rgba(245, 158, 11, 0.9), transparent 60%) !important; 
+            background: conic-gradient(transparent, rgba(249, 115, 22, 0.95), rgba(234, 179, 8, 0.95), rgba(30, 58, 138, 0.9), transparent 60%) !important; 
         }
 
         .glow-border-inner {
@@ -117,17 +117,17 @@
         </div>
     </section>
 
-    <!-- Danh sách dịch vụ sản phẩm -->
+    <!-- Danh sách dịch vụ sản phẩm chuẩn màu thương hiệu độc bản -->
     <main class="max-w-md mx-auto px-4 space-y-7 mt-2">
 
-        <!-- 1. LOTTE FINANCE -->
+        <!-- 1. LOTTE FINANCE (Màu Đỏ Đô / Hồng Lotte) -->
         <div class="glow-border-card glow-border-lotte shadow-2xl relative">
             <div class="glow-border-inner">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-500 via-rose-500 to-red-600 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">THẦN TỐC</div>
+                <div class="absolute top-0 right-0 bg-rose-600 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">THẦN TỐC</div>
 
-                <div class="bg-gradient-to-r from-red-900 via-rose-800 to-amber-600 px-4 py-2.5 flex items-center justify-between border-b border-rose-500/20">
+                <div class="bg-gradient-to-r from-red-900 via-rose-800 to-rose-950 px-4 py-2.5 flex items-center justify-between border-b border-rose-500/20">
                     <div class="flex items-center space-x-2">
-                        <span class="bg-white text-red-600 font-extrabold text-xs px-2 py-0.5 rounded shadow-sm">LOTTE</span>
+                        <span class="bg-white text-rose-600 font-extrabold text-xs px-2 py-0.5 rounded shadow-sm">LOTTE</span>
                         <h3 class="font-extrabold text-white text-base tracking-wide">FINANCE</h3>
                     </div>
                 </div>
@@ -139,7 +139,7 @@
                 </div>
 
                 <div class="p-4 space-y-3">
-                    <div class="grid grid-cols-3 gap-2 text-center bg-gradient-to-r from-red-950/40 to-rose-950/30 border border-rose-900/40 p-2.5 rounded-xl">
+                    <div class="grid grid-cols-3 gap-2 text-center bg-rose-950/30 border border-rose-900/40 p-2.5 rounded-xl">
                         <div>
                             <p class="text-xs text-slate-400">Giải ngân</p>
                             <p class="font-bold text-rose-400 text-sm">Chỉ 04 giờ</p>
@@ -154,12 +154,12 @@
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-red-950/40 to-slate-900/80 border border-rose-900/40 p-3 rounded-xl space-y-1 text-xs text-slate-200">
+                    <div class="bg-rose-950/30 border border-rose-900/40 p-3 rounded-xl space-y-1 text-xs text-slate-200">
                         <p class="font-bold text-rose-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-user-check text-rose-500 mr-1.5"></i> Đối tượng hỗ trợ:</p>
                         <p class="pl-4">• Công chức, NV văn phòng, công nhân, phụ nữ...</p>
                     </div>
 
-                    <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-rose-600/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
+                    <a href="https://goecom.asia/CeJBGm8U" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-500 hover:to-red-500 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-rose-600/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
                         ĐĂNG KÝ VAY LOTTE FINANCE <i class="fa-solid fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -167,12 +167,12 @@
         </div>
 
 
-        <!-- 2. SHINHAN FINANCE -->
+        <!-- 2. SHINHAN FINANCE (Màu Xanh Dương Shinhan) -->
         <div class="glow-border-card glow-border-shinhan shadow-2xl relative">
             <div class="glow-border-inner">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-indigo-500 via-purple-500 to-blue-600 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">ONLINE 100%</div>
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">ONLINE 100%</div>
 
-                <div class="bg-gradient-to-r from-blue-950 via-indigo-900 to-purple-800 px-4 py-2.5 flex items-center justify-between border-b border-indigo-500/20">
+                <div class="bg-gradient-to-r from-blue-950 via-blue-900 to-indigo-950 px-4 py-2.5 flex items-center justify-between border-b border-blue-500/20">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-blue-700 font-extrabold text-xs px-2 py-0.5 rounded shadow-sm">SHINHAN</span>
                         <h3 class="font-extrabold text-white text-base tracking-wide">FINANCE</h3>
@@ -186,13 +186,13 @@
                 </div>
 
                 <div class="p-4 space-y-3">
-                    <div class="bg-gradient-to-r from-blue-950/40 to-indigo-950/30 border border-indigo-900/40 p-3 rounded-xl space-y-1.5 text-xs text-slate-200">
-                        <p class="font-bold text-indigo-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-circle-check text-indigo-400 mr-1"></i> Ưu điểm nổi bật:</p>
+                    <div class="bg-blue-950/30 border border-blue-900/40 p-3 rounded-xl space-y-1.5 text-xs text-slate-200">
+                        <p class="font-bold text-blue-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-circle-check text-blue-400 mr-1"></i> Ưu điểm nổi bật:</p>
                         <p class="pl-4">• Chỉ cần CCCD, không chứng minh thu nhập</p>
                         <p class="pl-4">• Duyệt 100% online, vay đến 100 triệu (đến 48 tháng)</p>
                     </div>
 
-                    <button onclick="redirectShinhan()" class="btn-shine w-full text-center bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-blue-600/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
+                    <button onclick="redirectShinhan()" class="btn-shine w-full text-center bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-blue-600/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
                         ĐĂNG KÝ VAY SHINHAN FINANCE <i class="fa-solid fa-arrow-right ml-1"></i>
                     </button>
                 </div>
@@ -200,12 +200,12 @@
         </div>
 
 
-        <!-- 3. VPBANK -->
+        <!-- 3. VPBANK (Màu Xanh Lá VPBank) -->
         <div class="glow-border-card glow-border-vpbank shadow-2xl relative">
             <div class="glow-border-inner">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400 via-emerald-500 to-teal-600 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">DUYỆT 05'</div>
+                <div class="absolute top-0 right-0 bg-emerald-600 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">DUYỆT 05'</div>
 
-                <div class="bg-gradient-to-r from-emerald-950 via-teal-900 to-amber-600 px-4 py-2.5 flex items-center justify-between border-b border-teal-500/20">
+                <div class="bg-gradient-to-r from-emerald-950 via-teal-900 to-emerald-900 px-4 py-2.5 flex items-center justify-between border-b border-emerald-500/20">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-emerald-700 font-extrabold text-xs px-2 py-0.5 rounded shadow-sm">VPBANK</span>
                         <h3 class="font-extrabold text-white text-xs md:text-sm whitespace-nowrap tracking-wide">VAY TIÊU DÙNG ONLINE</h3>
@@ -219,13 +219,13 @@
                 </div>
 
                 <div class="p-4 space-y-3">
-                    <div class="bg-gradient-to-r from-emerald-950/40 to-teal-950/30 border border-teal-900/40 p-3 rounded-xl space-y-1.5 text-xs text-slate-200">
+                    <div class="bg-emerald-950/30 border border-emerald-900/40 p-3 rounded-xl space-y-1.5 text-xs text-slate-200">
                         <p class="font-bold text-emerald-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-shield-check text-emerald-400 mr-1"></i> Cam kết 4 KHÔNG từ VPBank:</p>
                         <p class="pl-4">• Không bảo hiểm khoản vay | Không thẩm định</p>
                         <p class="pl-4">• Không phí ẩn | Không phát sinh lãi khi chưa giải ngân</p>
                     </div>
 
-                    <a href="https://shorten.asia/mjYv557t" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-emerald-600 via-teal-600 to-amber-500 hover:from-emerald-500 hover:to-amber-400 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-emerald-600/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
+                    <a href="https://shorten.asia/mjYv557t" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-emerald-600/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
                         ĐĂNG KÝ VAY VPBANK <i class="fa-solid fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -233,12 +233,12 @@
         </div>
 
 
-        <!-- 4. VIETCREDIT (ĐÃ SỬA CHÍNH XÁC THÀNH TIN VAY) -->
+        <!-- 4. TIN VAY VIETCREDIT (Màu Đỏ Nguyên Bản VietCredit) -->
         <div class="glow-border-card glow-border-vietcredit shadow-2xl relative">
             <div class="glow-border-inner">
-                <div class="absolute top-0 right-0 bg-gradient-to-l from-amber-400 via-orange-500 to-red-600 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">DUYỆT 3 PHÚT</div>
+                <div class="absolute top-0 right-0 bg-red-600 text-white text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">DUYỆT 3 PHÚT</div>
 
-                <div class="bg-gradient-to-r from-red-950 via-orange-900 to-amber-600 px-4 py-2.5 flex items-center justify-between border-b border-orange-500/20">
+                <div class="bg-gradient-to-r from-red-950 via-red-900 to-red-950 px-4 py-2.5 flex items-center justify-between border-b border-red-500/20">
                     <div class="flex items-center space-x-2">
                         <span class="bg-white text-red-600 font-extrabold text-xs px-2 py-0.5 rounded shadow-sm">TIN VAY</span>
                         <h3 class="font-extrabold text-white text-base tracking-wide">VIETCREDIT</h3>
@@ -252,28 +252,28 @@
                 </div>
 
                 <div class="p-4 space-y-3">
-                    <div class="grid grid-cols-3 gap-2 text-center bg-gradient-to-r from-red-950/40 to-orange-950/30 border border-orange-900/40 p-2.5 rounded-xl">
+                    <div class="grid grid-cols-3 gap-2 text-center bg-red-950/30 border border-red-900/40 p-2.5 rounded-xl">
                         <div>
                             <p class="text-xs text-slate-400">Giải ngân</p>
-                            <p class="font-bold text-amber-400 text-sm">Chỉ 03 phút</p>
+                            <p class="font-bold text-red-400 text-sm">Chỉ 03 phút</p>
                         </div>
                         <div>
                             <p class="text-xs text-slate-400">Lãi suất từ</p>
-                            <p class="font-bold text-amber-400 text-sm">1,42%/tháng</p>
+                            <p class="font-bold text-red-400 text-sm">1,42%/tháng</p>
                         </div>
                         <div>
                             <p class="text-xs text-slate-400">Hạn mức đến</p>
-                            <p class="font-bold text-amber-400 text-sm">100 triệu</p>
+                            <p class="font-bold text-red-400 text-sm">100 triệu</p>
                         </div>
                     </div>
 
-                    <div class="bg-gradient-to-r from-red-950/40 to-orange-950/30 border border-orange-900/40 p-3 rounded-xl space-y-1.5 text-xs text-slate-200">
-                        <p class="font-bold text-amber-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-circle-check text-amber-400 mr-1"></i> Ưu điểm Tin Vay VietCredit:</p>
+                    <div class="bg-red-950/30 border border-red-900/40 p-3 rounded-xl space-y-1.5 text-xs text-slate-200">
+                        <p class="font-bold text-red-400 text-xs uppercase tracking-wide"><i class="fa-solid fa-circle-check text-red-400 mr-1"></i> Ưu điểm Tin Vay VietCredit:</p>
                         <p class="pl-4">• 0 phí ẩn - Lãi suất minh bạch chỉ từ 1.42%/tháng</p>
                         <p class="pl-4">• Chỉ cần <strong>CCCD</strong> | Không chứng minh thu nhập</p>
                     </div>
 
-                    <a href="https://shorten.asia/M7zTw5M9" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-slate-950 font-extrabold py-3.5 rounded-xl shadow-lg shadow-orange-500/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
+                    <a href="https://shorten.asia/M7zTw5M9" target="_blank" class="btn-shine block w-full text-center bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white font-extrabold py-3.5 rounded-xl shadow-lg shadow-red-600/25 text-sm uppercase tracking-wide transition active:scale-[0.98]">
                         ĐĂNG KÝ VAY VIETCREDIT <i class="fa-solid fa-arrow-right ml-1"></i>
                     </a>
                 </div>
@@ -281,7 +281,7 @@
         </div>
 
 
-        <!-- 5. THẺ TÍN DỤNG VIB -->
+        <!-- 5. THẺ TÍN DỤNG VIB (ĐẶC QUYỀN MÀU CAM VÀNG + XANH NAVY VIB) -->
         <div class="glow-border-card glow-border-vib shadow-2xl relative">
             <div class="glow-border-inner">
                 <div class="absolute top-0 right-0 bg-gradient-to-l from-orange-500 to-amber-500 text-slate-950 text-xs font-black px-3 py-1 rounded-bl-xl uppercase tracking-wider shadow z-10">HOT DỊCH VỤ</div>
